@@ -26,19 +26,18 @@
     <meta name="description" content="Customizable bingo card for family game nights"> <!-- description of webpage -->
 </head>
 <body id="background" style="height: 100vh; width:100vw; background-color: #a1c1a1; margin: 0; padding: 0; font-family: inherit;">
-    <div id="header" style="height: 10vh; width:100vw; background-color: #a1e1a1; margin: 0; padding: 0; border-bottom: 0.5vh solid #017001; display: flex; align-items: center; justify-content: flex-end; font-family: inherit;">
-        <button onclick="themeFunc()" id="theme" class="dur" style="display: inline; position: absolute;  left: 0; margin: 0 5vw; padding: 0; font-size: 2.5vw; font-family: inherit; background-color: #eeeeee;">Cycle Theme</button>
-        <button onclick="customize()" id="customizer" style="display: inline; position: relative; margin: 0 5vw; padding: 0; font-size: 2.5vw; font-family: inherit; background-color: #eeeeee;">Customize Card</button>
-        <button onclick="randomize()" id="randomizer" style="display: inline; position: relative; margin: 0 5vw; padding: 0; font-size: 2.5vw; font-family: inherit; background-color: #eeeeee;">Randomize Card</button>
+    <div id="header" style="height: 10vh; width:100vw; background-color: #a1e1a1; margin: 0; padding: 0; border-bottom: 0.5vh solid #017001; display: flex; align-items: center; justify-content: center; font-family: inherit;">
+        <button onclick="themeFunc()" id="theme" style="display: inline; position: relative; margin: 0 2vh; padding: 2px; font-size: 4vh; font-family: inherit; background-color: #eeeeee;">Cycle Theme</button>
+        <button onclick="customize()" id="customizer" style="display: inline; position: relative; margin: 0 2vh; padding: 2px; font-size: 4vh; font-family: inherit; background-color: #eeeeee;">Customize Card</button>
+        <button onclick="randomize()" id="randomizer" style="display: inline; position: relative; margin: 0 2vh; padding: 2px; font-size: 4vh; font-family: inherit; background-color: #eeeeee;">Randomize Card</button>
     </div>
-    <style>
+    <style id="styling">
         #board table tr {
             align-items: center;
-            border-bottom: 0.2vh solid black;
             margin: 0;
             padding: 0;
         }
-        #board table tr td {
+        #board table tr td.cell {
             text-align: center;
             padding: 0;
             width: 14vh;
@@ -46,49 +45,49 @@
             font-size: 8vh;
         }
     </style>
-    <div id="board" style="position: relative; margin: 2vh auto 0; width: 74.3vh; background-color: #eeeeee; border-radius: 2vw;">
+    <div id="board" style="position: relative; margin: 2vh auto 0; width: 74.3vh; background-color: #eeeeee; border-radius: 2vh;">
         <table style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
             <tr id="HeadingLetters" style="border-bottom: 0.4vh solid black; margin: 0; padding: 0;">
-                <td style="font-size: 12vh;">B</td>
-                <td style="font-size: 12vh;">I</td>
-                <td style="font-size: 12vh;">N</td>
-                <td style="font-size: 12vh;">G</td>
-                <td style="font-size: 12vh;">O</td>
+                <td id="B" class="cell" style="font-size: 12vh;">B</td>
+                <td id="I" class="cell" style="font-size: 12vh;">I</td>
+                <td id="N" class="cell" style="font-size: 12vh;">N</td>
+                <td id="G" class="cell" style="font-size: 12vh;">G</td>
+                <td id="O" class="cell" style="font-size: 12vh;">O</td>
             </tr>
             <tr>
-                <td id="1" style="border-right: 0.2vh solid black;"></td>
-                <td id="2" style="border-right: 0.2vh solid black"></td>
-                <td id="3" style="border-right: 0.2vh solid black"></td>
-                <td id="4" style="border-right: 0.2vh solid black"></td>
-                <td id="5" ></td>
+                <td id="1" class="cell" style="border-right: 0.2vh solid black; border-bottom: 0.2vh solid black;"></td>
+                <td id="2" class="cell" style="border-right: 0.2vh solid black; border-bottom: 0.2vh solid black;"></td>
+                <td id="3" class="cell" style="border-right: 0.2vh solid black; border-bottom: 0.2vh solid black;"></td>
+                <td id="4" class="cell" style="border-right: 0.2vh solid black; border-bottom: 0.2vh solid black;"></td>
+                <td id="5" class="cell" style="border-bottom: 0.2vh solid black;"></td>
             </tr>
             <tr>
-                <td id="6" style="border-right: 0.2vh solid black"></td>
-                <td id="7" style="border-right: 0.2vh solid black"></td>
-                <td id="8" style="border-right: 0.2vh solid black"></td>
-                <td id="9" style="border-right: 0.2vh solid black"></td>
-                <td id="10"></td>
+                <td id="6" class="cell" style="border-right: 0.2vh solid black; border-bottom: 0.2vh solid black;"></td>
+                <td id="7" class="cell" style="border-right: 0.2vh solid black; border-bottom: 0.2vh solid black;"></td>
+                <td id="8" class="cell" style="border-right: 0.2vh solid black; border-bottom: 0.2vh solid black;"></td>
+                <td id="9" class="cell" style="border-right: 0.2vh solid black; border-bottom: 0.2vh solid black;"></td>
+                <td id="10" class="cell" style="border-bottom: 0.2vh solid black;"></td>
             </tr>
             <tr>
-                <td id="11" style="border-right: 0.2vh solid black"></td>
-                <td id="12" style="border-right: 0.2vh solid black"></td>
-                <td id="free" id="5" style="font-size: 4.8vh; border-right: 0.2vh solid black; color: #017001">FREE</td>
-                <td id="13" style="border-right: 0.2vh solid black"></td>
-                <td id="14"></td>
+                <td id="11" class="cell" style="border-right: 0.2vh solid black; border-bottom: 0.2vh solid black;"></td>
+                <td id="12" class="cell" style="border-right: 0.2vh solid black; border-bottom: 0.2vh solid black;"></td>
+                <td id="free" class="cell" id="5" style="font-size: 4.8vh; border-right: 0.2vh solid black; color: #017001; border-bottom: 0.2vh solid black;">FREE</td>
+                <td id="13" class="cell" style="border-right: 0.2vh solid black; border-bottom: 0.2vh solid black;"></td>
+                <td id="14" class="cell" style="border-bottom: 0.2vh solid black;"></td>
             </tr>
             <tr>
-                <td id="15" style="border-right: 0.2vh solid black"></td>
-                <td id="16" style="border-right: 0.2vh solid black"></td>
-                <td id="17" style="border-right: 0.2vh solid black"></td>
-                <td id="18" style="border-right: 0.2vh solid black"></td>
-                <td id="19"></td>
+                <td id="15" class="cell" style="border-right: 0.2vh solid black; border-bottom: 0.2vh solid black;"></td>
+                <td id="16" class="cell" style="border-right: 0.2vh solid black; border-bottom: 0.2vh solid black;"></td>
+                <td id="17" class="cell" style="border-right: 0.2vh solid black; border-bottom: 0.2vh solid black;"></td>
+                <td id="18" class="cell" style="border-right: 0.2vh solid black; border-bottom: 0.2vh solid black;"></td>
+                <td id="19" class="cell" style="border-bottom: 0.2vh solid black;"></td>
             </tr>
             <tr style="border: none;">
-                <td id="20" style="border-right: 0.2vh solid black"></td>
-                <td id="21" style="border-right: 0.2vh solid black"></td>
-                <td id="22" style="border-right: 0.2vh solid black"></td>
-                <td id="23" style="border-right: 0.2vh solid black"></td>
-                <td id="24"></td>
+                <td id="20" class="cell" style="border-right: 0.2vh solid black;"></td>
+                <td id="21" class="cell" style="border-right: 0.2vh solid black;"></td>
+                <td id="22" class="cell" style="border-right: 0.2vh solid black;"></td>
+                <td id="23" class="cell" style="border-right: 0.2vh solid black;"></td>
+                <td id="24" class="cell"></td>
             </tr>
         </table>
     </div>
@@ -124,78 +123,151 @@
         
         // function to change theme colors
         function themeFunc() {
-            if (styleTheme === 'Green') {
-                document.getElementById("background").style.backgroundColor = '#a1a1c1';
-                document.getElementById("header").style.backgroundColor = '#a1a1e1';
-                document.getElementById("header").style.borderBottomColor = '#010170'
-                document.getElementById("theme").style.border = '0.4vw solid #010170';
-                document.getElementById("customizer").style.border = '0.4vw solid #010170';
-                document.getElementById("randomizer").style.border = '0.4vw solid #010170';
-                document.getElementById("free").style.color = '#010170';
-                styleTheme = 'Blue'; // change theme variable
-                for (let i = 0; i < IDs.length-1; i++) {
-                    temp = document.getElementById(IDs[i]).style.backgroundColor;
-                    if (temp === "rgb(238, 238, 238)" || temp == "") {
-                        // do nothing, already gray
-                    } else {
-                        if (styleTheme === 'Green') {
-                            document.getElementById(IDs[i]).style.backgroundColor = '#0d0'
-                        } else if (styleTheme === 'Blue') {
-                            document.getElementById(IDs[i]).style.backgroundColor = '#00d'
-                        } else if (styleTheme === 'Red') {
-                            document.getElementById(IDs[i]).style.backgroundColor = '#d00'
+            if (test === 0) { // test = 0 when not customizing
+                if (styleTheme === 'Green') {
+                    document.getElementById("background").style.backgroundColor = '#a1a1c1';
+                    document.getElementById("header").style.backgroundColor = '#a1a1e1';
+                    document.getElementById("header").style.borderBottomColor = '#010170'
+                    document.getElementById("theme").style.border = '0.4vw solid #010170';
+                    document.getElementById("customizer").style.border = '0.4vw solid #010170';
+                    document.getElementById("randomizer").style.border = '0.4vw solid #010170';
+                    document.getElementById("free").style.color = '#010170';
+                    styleTheme = 'Blue'; // change theme variable
+                    for (let i = 0; i < IDs.length; i++) {
+                        temp = document.getElementById(IDs[i]).style.backgroundColor;
+                        if (temp === "rgb(238, 238, 238)" || temp == "") {
+                            // do nothing, already gray
+                        } else {
+                            if (styleTheme === 'Green') {
+                                document.getElementById(IDs[i]).style.backgroundColor = '#0d0'
+                            } else if (styleTheme === 'Blue') {
+                                document.getElementById(IDs[i]).style.backgroundColor = '#00d'
+                            } else if (styleTheme === 'Red') {
+                                document.getElementById(IDs[i]).style.backgroundColor = '#d00'
+                            }
                         }
                     }
-                }
-                return
-            } else if (styleTheme === 'Blue') {
-                document.getElementById("background").style.backgroundColor = '#c1a1a1';
-                document.getElementById("header").style.backgroundColor = '#e1a1a1';
-                document.getElementById("header").style.borderBottomColor = '#700101'
-                document.getElementById("theme").style.border = '0.4vw solid #700101';
-                document.getElementById("customizer").style.border = '0.4vw solid #700101';
-                document.getElementById("randomizer").style.border = '0.4vw solid #700101';
-                document.getElementById("free").style.color = '#700101';
-                styleTheme = 'Red'; // change theme variable
-                for (let i = 0; i < IDs.length-1; i++) {
-                    temp = document.getElementById(IDs[i]).style.backgroundColor;
-                    if (temp === "rgb(238, 238, 238)" || temp == "") {
-                        // do nothing, already gray
-                    } else {
-                        if (styleTheme === 'Green') {
-                            document.getElementById(IDs[i]).style.backgroundColor = '#0d0'
-                        } else if (styleTheme === 'Blue') {
-                            document.getElementById(IDs[i]).style.backgroundColor = '#00d'
-                        } else if (styleTheme === 'Red') {
-                            document.getElementById(IDs[i]).style.backgroundColor = '#d00'
+                    return
+                } else if (styleTheme === 'Blue') {
+                    document.getElementById("background").style.backgroundColor = '#c1a1a1';
+                    document.getElementById("header").style.backgroundColor = '#e1a1a1';
+                    document.getElementById("header").style.borderBottomColor = '#700101'
+                    document.getElementById("theme").style.border = '0.4vw solid #700101';
+                    document.getElementById("customizer").style.border = '0.4vw solid #700101';
+                    document.getElementById("randomizer").style.border = '0.4vw solid #700101';
+                    document.getElementById("free").style.color = '#700101';
+                    styleTheme = 'Red'; // change theme variable
+                    for (let i = 0; i < IDs.length; i++) {
+                        temp = document.getElementById(IDs[i]).style.backgroundColor;
+                        if (temp === "rgb(238, 238, 238)" || temp == "") {
+                            // do nothing, already gray
+                        } else {
+                            if (styleTheme === 'Green') {
+                                document.getElementById(IDs[i]).style.backgroundColor = '#0d0'
+                            } else if (styleTheme === 'Blue') {
+                                document.getElementById(IDs[i]).style.backgroundColor = '#00d'
+                            } else if (styleTheme === 'Red') {
+                                document.getElementById(IDs[i]).style.backgroundColor = '#d00'
+                            }
                         }
                     }
-                }
-                return
-            } else if (styleTheme === 'Red') {
-                document.getElementById("background").style.backgroundColor = '#a1c1a1';
-                document.getElementById("header").style.backgroundColor = '#a1e1a1';
-                document.getElementById("header").style.borderBottomColor = '#017001'
-                document.getElementById("theme").style.border = '0.4vw solid #017001';
-                document.getElementById("customizer").style.border = '0.4vw solid #017001';
-                document.getElementById("randomizer").style.border = '0.4vw solid #017001';
-                document.getElementById("free").style.color = '#017001';
-                styleTheme = 'Green'; // change theme variable
-                for (let i = 0; i < IDs.length-1; i++) {
-                    temp = document.getElementById(IDs[i]).style.backgroundColor;
-                    if (temp === "rgb(238, 238, 238)" || temp == "") {
-                        // do nothing, already gray
-                    } else {
-                        if (styleTheme === 'Green') {
-                            document.getElementById(IDs[i]).style.backgroundColor = '#0d0'
-                        } else if (styleTheme === 'Blue') {
-                            document.getElementById(IDs[i]).style.backgroundColor = '#00d'
-                        } else if (styleTheme === 'Red') {
-                            document.getElementById(IDs[i]).style.backgroundColor = '#d00'
+                    return
+                } else if (styleTheme === 'Red') {
+                    document.getElementById("background").style.backgroundColor = '#a1c1a1';
+                    document.getElementById("header").style.backgroundColor = '#a1e1a1';
+                    document.getElementById("header").style.borderBottomColor = '#017001'
+                    document.getElementById("theme").style.border = '0.4vw solid #017001';
+                    document.getElementById("customizer").style.border = '0.4vw solid #017001';
+                    document.getElementById("randomizer").style.border = '0.4vw solid #017001';
+                    document.getElementById("free").style.color = '#017001';
+                    styleTheme = 'Green'; // change theme variable
+                    for (let i = 0; i < IDs.length; i++) {
+                        temp = document.getElementById(IDs[i]).style.backgroundColor;
+                        if (temp === "rgb(238, 238, 238)" || temp == "") {
+                            // do nothing, already gray
+                        } else {
+                            if (styleTheme === 'Green') {
+                                document.getElementById(IDs[i]).style.backgroundColor = '#0d0'
+                            } else if (styleTheme === 'Blue') {
+                                document.getElementById(IDs[i]).style.backgroundColor = '#00d'
+                            } else if (styleTheme === 'Red') {
+                                document.getElementById(IDs[i]).style.backgroundColor = '#d00'
+                            }
                         }
                     }
+                    return
+                }                  
+            } else {
+                if (styleTheme === 'Green') {
+                    document.getElementById("header").style.backgroundColor = '#a1a1e1';
+                    document.getElementById("header").style.borderBottomColor = '#010170'
+                    document.getElementById("theme").style.border = '0.4vw solid #010170';
+                    document.getElementById("customizer").style.border = '0.4vw solid #010170';
+                    document.getElementById("randomizer").style.border = '0.4vw solid #010170';
+                    document.getElementById("free").style.color = '#010170';
+                    styleTheme = 'Blue'; // change theme variable
+                    for (let i = 0; i < IDs.length; i++) {
+                        temp = document.getElementById(IDs[i]).style.backgroundColor;
+                        if (temp === "rgb(238, 238, 238)" || temp == "") {
+                            // do nothing, already gray
+                        } else {
+                            if (styleTheme === 'Green') {
+                                document.getElementById(IDs[i]).style.backgroundColor = '#0d0'
+                            } else if (styleTheme === 'Blue') {
+                                document.getElementById(IDs[i]).style.backgroundColor = '#00d'
+                            } else if (styleTheme === 'Red') {
+                                document.getElementById(IDs[i]).style.backgroundColor = '#d00'
+                            }
+                        }
+                    }
+                    return
+                } else if (styleTheme === 'Blue') {
+                    document.getElementById("header").style.backgroundColor = '#e1a1a1';
+                    document.getElementById("header").style.borderBottomColor = '#700101'
+                    document.getElementById("theme").style.border = '0.4vw solid #700101';
+                    document.getElementById("customizer").style.border = '0.4vw solid #700101';
+                    document.getElementById("randomizer").style.border = '0.4vw solid #700101';
+                    document.getElementById("free").style.color = '#700101';
+                    styleTheme = 'Red'; // change theme variable
+                    for (let i = 0; i < IDs.length; i++) {
+                        temp = document.getElementById(IDs[i]).style.backgroundColor;
+                        if (temp === "rgb(238, 238, 238)" || temp == "") {
+                            // do nothing, already gray
+                        } else {
+                            if (styleTheme === 'Green') {
+                                document.getElementById(IDs[i]).style.backgroundColor = '#0d0'
+                            } else if (styleTheme === 'Blue') {
+                                document.getElementById(IDs[i]).style.backgroundColor = '#00d'
+                            } else if (styleTheme === 'Red') {
+                                document.getElementById(IDs[i]).style.backgroundColor = '#d00'
+                            }
+                        }
+                    }
+                    return
+                } else if (styleTheme === 'Red') {
+                    document.getElementById("header").style.backgroundColor = '#a1e1a1';
+                    document.getElementById("header").style.borderBottomColor = '#017001'
+                    document.getElementById("theme").style.border = '0.4vw solid #017001';
+                    document.getElementById("customizer").style.border = '0.4vw solid #017001';
+                    document.getElementById("randomizer").style.border = '0.4vw solid #017001';
+                    document.getElementById("free").style.color = '#017001';
+                    styleTheme = 'Green'; // change theme variable
+                    for (let i = 0; i < IDs.length; i++) {
+                        temp = document.getElementById(IDs[i]).style.backgroundColor;
+                        if (temp === "rgb(238, 238, 238)" || temp == "") {
+                            // do nothing, already gray
+                        } else {
+                            if (styleTheme === 'Green') {
+                                document.getElementById(IDs[i]).style.backgroundColor = '#0d0'
+                            } else if (styleTheme === 'Blue') {
+                                document.getElementById(IDs[i]).style.backgroundColor = '#00d'
+                            } else if (styleTheme === 'Red') {
+                                document.getElementById(IDs[i]).style.backgroundColor = '#d00'
+                            }
+                        }
+                    }
+                    return
                 }
-                return
             }
         }
 
@@ -340,6 +412,52 @@
                 // user cancelled, do nothing
             }
         }    
+
+        // section handles how to setup page if window is width limited
+        window.onresize = function(event) {
+            wide = window.innerWidth;
+            high = window.innerHeight;
+            if (wide < 0.748*high) {
+                var all = document.getElementsByClassName('cell');
+                for (var i = 0; i < all.length; i++) {
+                    all[i].style.width = '19vw';
+                    all[i].style.height = '19vw';
+                    all[i].style.fontSize = '10.7vw';
+                }
+                document.getElementById('free').style.fontSize = '6.42vw';
+                document.getElementById('B').style.fontSize = '16vW';
+                document.getElementById('I').style.fontSize = '16vW';
+                document.getElementById('N').style.fontSize = '16vW';
+                document.getElementById('G').style.fontSize = '16vW';
+                document.getElementById('O').style.fontSize = '16vW';
+                document.getElementById('board').style.width = '96vw';
+                document.getElementById('theme').style.fontSize = '5.35vw';
+                document.getElementById('customizer').style.fontSize = '5.35vw';
+                document.getElementById('randomizer').style.fontSize = '5.35vw';
+            } else {
+                var all = document.getElementsByClassName('cell');
+                for (var i = 0; i < all.length; i++) {
+                    all[i].style.width = '14vh';
+                    all[i].style.height = '14vh';
+                    all[i].style.fontSize = '8vh';
+                }
+                document.getElementById('free').style.fontSize = '4.8vh';
+                document.getElementById('B').style.fontSize = '12vh';
+                document.getElementById('I').style.fontSize = '12vh';
+                document.getElementById('N').style.fontSize = '12vh';
+                document.getElementById('G').style.fontSize = '12vh';
+                document.getElementById('O').style.fontSize = '12vh';
+                document.getElementById('board').style.width = '74.3vh';
+                document.getElementById('theme').style.fontSize = '4vh';
+                document.getElementById('customizer').style.fontSize = '4vh';
+                document.getElementById('randomizer').style.fontSize = '4vh';
+            }
+        }
+    </script>
+    <script type="text/javascript"> // prevent accidental reloads with warning
+        window.onbeforeunload = function () {
+            return true;
+        }
     </script>
 </body>
 </html>
