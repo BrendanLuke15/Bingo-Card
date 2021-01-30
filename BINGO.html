@@ -453,6 +453,47 @@
                 document.getElementById('randomizer').style.fontSize = '4vh';
             }
         }
+
+        // section that sets up page properly on first load
+        window.onload = function(event) {
+            wide = window.innerWidth;
+            high = window.innerHeight;
+            if (wide < 0.748*high) {
+                var all = document.getElementsByClassName('cell');
+                for (var i = 0; i < all.length; i++) {
+                    all[i].style.width = '19vw';
+                    all[i].style.height = '19vw';
+                    all[i].style.fontSize = '10.7vw';
+                }
+                document.getElementById('free').style.fontSize = '6.42vw';
+                document.getElementById('B').style.fontSize = '16vW';
+                document.getElementById('I').style.fontSize = '16vW';
+                document.getElementById('N').style.fontSize = '16vW';
+                document.getElementById('G').style.fontSize = '16vW';
+                document.getElementById('O').style.fontSize = '16vW';
+                document.getElementById('board').style.width = '96vw';
+                document.getElementById('theme').style.fontSize = '5.35vw';
+                document.getElementById('customizer').style.fontSize = '5.35vw';
+                document.getElementById('randomizer').style.fontSize = '5.35vw';
+            } else {
+                var all = document.getElementsByClassName('cell');
+                for (var i = 0; i < all.length; i++) {
+                    all[i].style.width = '14vh';
+                    all[i].style.height = '14vh';
+                    all[i].style.fontSize = '8vh';
+                }
+                document.getElementById('free').style.fontSize = '4.8vh';
+                document.getElementById('B').style.fontSize = '12vh';
+                document.getElementById('I').style.fontSize = '12vh';
+                document.getElementById('N').style.fontSize = '12vh';
+                document.getElementById('G').style.fontSize = '12vh';
+                document.getElementById('O').style.fontSize = '12vh';
+                document.getElementById('board').style.width = '74.3vh';
+                document.getElementById('theme').style.fontSize = '4vh';
+                document.getElementById('customizer').style.fontSize = '4vh';
+                document.getElementById('randomizer').style.fontSize = '4vh';
+            }
+        }
     </script>
     <script type="text/javascript"> // prevent accidental reloads with warning
         window.onbeforeunload = function () {
