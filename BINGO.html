@@ -1,0 +1,261 @@
+<html style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+<head>
+    <!--
+        By: Brendan Luke
+        Date Started: January 29, 2020
+        Date Last Modified: January 29, 2020
+    
+        This webpage is a Bingo card.
+        Green:
+            Head: #a1e1a1
+            BG: #a1c1a1
+            Border: #017001
+        Blue:
+            Head: #a1a1e1
+            BG: #a1a1c1
+            Border: #010170
+        Red:
+            Head: #e1a1a1
+            BG: #c1a1a1
+            Border: #700101
+    -->
+    <title>BINGO Card</title>
+    <!--<link rel="shortcut icon" href="Images/IconB.png"/> <!-- Website Icon -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- included for use on many different screen resolutions -->
+    <meta name="author" content="Brendan Luke"> <!-- Include Author information -->
+    <meta name="description" content="Customizable bingo card for family game nights"> <!-- description of webpage -->
+</head>
+<body id="background" style="height: 100vh; width:100vw; background-color: #a1c1a1; margin: 0; padding: 0; font-family: inherit;">
+    <div id="header" style="height: 10vh; width:100vw; background-color: #a1e1a1; margin: 0; padding: 0; border-bottom: 0.5vh solid #017001; display: flex; align-items: center; justify-content: flex-end; font-family: inherit;">
+        <button onclick="themeFunc()" id="theme" class="dur" style="display: inline; position: absolute;  left: 0; margin: 0 5vw; padding: 0; font-size: 2.5vw; font-family: inherit; background-color: #eeeeee;">Cycle Theme</button>
+        <button onclick="customize()" id="customizer" style="display: inline; position: relative; margin: 0 5vw; padding: 0; font-size: 2.5vw; font-family: inherit; background-color: #eeeeee;">Customize Card</button>
+        <button onclick="randomize()" id="randomizer" style="display: inline; position: relative; margin: 0 5vw; padding: 0; font-size: 2.5vw; font-family: inherit; background-color: #eeeeee;">Randomize Card</button>
+    </div>
+    <style>
+        #board table tr {
+            align-items: center;
+            border-bottom: 0.2vh solid black;
+            margin: 0;
+            padding: 0;
+        }
+        #board table tr td {
+            text-align: center;
+            padding: 0;
+            width: 14vh;
+            height: 14vh;
+            font-size: 8vh;
+        }
+    </style>
+    <div id="board" style="position: relative; margin: 2vh auto 0; width: 74.3vh; background-color: #eeeeee; border-radius: 2vw;">
+        <table style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
+            <tr id="HeadingLetters" style="border-bottom: 0.4vh solid black; margin: 0; padding: 0;">
+                <td style="font-size: 12vh;">B</td>
+                <td style="font-size: 12vh;">I</td>
+                <td style="font-size: 12vh;">N</td>
+                <td style="font-size: 12vh;">G</td>
+                <td style="font-size: 12vh;">O</td>
+            </tr>
+            <tr>
+                <td id="1" style="border-right: 0.2vh solid black;"></td>
+                <td id="2" style="border-right: 0.2vh solid black"></td>
+                <td id="3" style="border-right: 0.2vh solid black"></td>
+                <td id="4" style="border-right: 0.2vh solid black"></td>
+                <td id="5" ></td>
+            </tr>
+            <tr>
+                <td id="6" style="border-right: 0.2vh solid black"></td>
+                <td id="7" style="border-right: 0.2vh solid black"></td>
+                <td id="8" style="border-right: 0.2vh solid black"></td>
+                <td id="9" style="border-right: 0.2vh solid black"></td>
+                <td id="10"></td>
+            </tr>
+            <tr>
+                <td id="11" style="border-right: 0.2vh solid black"></td>
+                <td id="12" style="border-right: 0.2vh solid black"></td>
+                <td id="free" id="5" style="font-size: 4.8vh; border-right: 0.2vh solid black; color: #017001">FREE</td>
+                <td id="13" style="border-right: 0.2vh solid black"></td>
+                <td id="14"></td>
+            </tr>
+            <tr>
+                <td id="15" style="border-right: 0.2vh solid black"></td>
+                <td id="16" style="border-right: 0.2vh solid black"></td>
+                <td id="17" style="border-right: 0.2vh solid black"></td>
+                <td id="18" style="border-right: 0.2vh solid black"></td>
+                <td id="19"></td>
+            </tr>
+            <tr style="border: none;">
+                <td id="20" style="border-right: 0.2vh solid black"></td>
+                <td id="21" style="border-right: 0.2vh solid black"></td>
+                <td id="22" style="border-right: 0.2vh solid black"></td>
+                <td id="23" style="border-right: 0.2vh solid black"></td>
+                <td id="24"></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        // Theme button initial (variable) styling
+        document.getElementById("theme").style.borderRadius = '1vw';
+        document.getElementById("theme").style.border = '0.4vw solid #017001';
+        // Randomizer button initial (variable) styling
+        document.getElementById("randomizer").style.borderRadius = '1vw';
+        document.getElementById("randomizer").style.border = '0.4vw solid #017001';
+        // Customizer button initial (variable) styling
+        document.getElementById("customizer").style.borderRadius = '1vw';
+        document.getElementById("customizer").style.border = '0.4vw solid #017001';
+        // array of element ID's for bingo squares
+        IDs = ['1','6','11','15','20','2','7','12','16','21','3','8','17','22','4','9','13','18','23','5','10','14','19','24','free'];
+        IDs2 = IDs.slice(0,-1); // new array with all squares minus free square
+        // set logic variable
+        test = 0;
+
+        // Column IDs
+        B = ['1','6','11','15','20']; // B column
+        Bnum = ['0','0','0','0','0']; // B number column
+        I = ['2','7','12','16','21']; // I column
+        Inum = ['0','0','0','0','0']; // I number column
+        N = ['3','8','17','22']; // N column
+        Nnum = ['0','0','0','0','0']; // N number column
+        G = ['4','9','13','18','23']; // G column
+        Gnum = ['0','0','0','0','0']; // G number column
+        O = ['5','10','14','19','24']; // O column
+        Onum = ['0','0','0','0','0']; // O number column
+        
+        // function to change theme colors
+        function themeFunc() {
+
+        }
+
+        // Change color of square on click/tap if not in customize mode
+        window.onclick = function(event) {
+            targ = event.target.id;
+            if (IDs.includes(targ) && test === 0) {
+                // turn square green or back to gray
+                colour = document.getElementById(targ).style.backgroundColor;
+                //console.log(targ);
+                if (colour === "rgb(238, 238, 238)" || colour == "") {
+                    document.getElementById(targ).style.backgroundColor = '#0f0'
+                } else {
+                    document.getElementById(targ).style.backgroundColor = '#eeeeee'
+                } 
+            } else if (IDs2.includes(targ) && test === 1) { // tap sqaure to input number
+                if (B.includes(targ)) {
+                    //console.log('B column');
+                    custNum = window.prompt("Enter number:","between 1 & 15");
+                    document.getElementById(targ).innerHTML = custNum;
+                } else if (I.includes(targ)) {
+                    custNum = window.prompt("Enter number:","between 16 & 30");
+                    document.getElementById(targ).innerHTML = custNum;
+                } else if (N.includes(targ)) {
+                    custNum = window.prompt("Enter number:","between 31 & 45");
+                    document.getElementById(targ).innerHTML = custNum;
+                } else if (G.includes(targ)) {
+                    custNum = window.prompt("Enter number:","between 46 & 60");
+                    document.getElementById(targ).innerHTML = custNum;
+                } else if (O.includes(targ)) {
+                    custNum = window.prompt("Enter number:","between 61 & 75");
+                    document.getElementById(targ).innerHTML = custNum;
+                } else {
+                    // do nothing
+                }
+            } else if (targ === 'free' && test === 1) {
+                test = 0;
+                document.getElementById("background").style.backgroundColor = '#a1c1a1';
+                document.getElementById("free").innerHTML = 'FREE';
+            }
+        }
+
+        // Randomize function
+        function randomize() {
+            if (window.confirm("Are you sure you want to randomize? this will erase any current card")) { // user wishes to randomize card
+            // B column
+                var i = 0; // index variable
+                while ( i < B.length) {
+                    num = Math.round(Math.random()*(15-1)+1);
+                    num = num.toString();
+                    if (Bnum.includes(num)) {
+                        // number is already on board, must make new number
+                    } else {
+                        Bnum[i] = num;
+                        document.getElementById(B[i]).innerHTML = num;
+                        document.getElementById(B[i]).style.backgroundColor = '#eeeeee';
+                        i = i+1;
+                    }
+                }
+            // I column
+                var i = 0; // index variable
+                while ( i < I.length) {
+                    num = Math.round(Math.random()*(30-16)+16);
+                    num = num.toString();
+                    if (Inum.includes(num)) {
+                        // number is already on board, must make new number
+                    } else {
+                        Inum[i] = num;
+                        document.getElementById(I[i]).innerHTML = num;
+                        document.getElementById(I[i]).style.backgroundColor = '#eeeeee';
+                        i = i+1;
+                    }
+                }
+            // N column
+                var i = 0; // index variable
+                while ( i < N.length) {
+                    num = Math.round(Math.random()*(45-31)+31);
+                    num = num.toString();
+                    if (Nnum.includes(num)) {
+                        // number is already on board, must make new number
+                    } else {
+                        Nnum[i] = num;
+                        document.getElementById(N[i]).innerHTML = num;
+                        document.getElementById(N[i]).style.backgroundColor = '#eeeeee';
+                        i = i+1;
+                    }
+                }
+            // G column
+                var i = 0; // index variable
+                while ( i < G.length) {
+                    num = Math.round(Math.random()*(60-46)+46);
+                    num = num.toString();
+                    if (Gnum.includes(num)) {
+                        // number is already on board, must make new number
+                    } else {
+                        Gnum[i] = num;
+                        document.getElementById(G[i]).innerHTML = num;
+                        document.getElementById(G[i]).style.backgroundColor = '#eeeeee';
+                        i = i+1;
+                    }
+                }
+            // O column
+                var i = 0; // index variable
+                while ( i < O.length) {
+                    num = Math.round(Math.random()*(75-61)+61);
+                    num = num.toString();
+                    if (Onum.includes(num)) {
+                        // number is already on board, must make new number
+                    } else {
+                        Onum[i] = num;
+                        document.getElementById(O[i]).innerHTML = num;
+                        document.getElementById(O[i]).style.backgroundColor = '#eeeeee';
+                        i = i+1;
+                    }
+                }
+                document.getElementById("free").style.backgroundColor = '#eeeeee';
+            } else {
+                // user cancelled, do nothing
+            }
+        }
+        
+        // Customize Function
+        function customize() {
+            if (window.confirm("Are you sure you want to customize? this will erase any current card")) {
+                document.getElementById("background").style.backgroundColor = '#555';
+                document.getElementById("free").innerHTML = 'Done?';
+                for (let i = 0; i < IDs.length; i++) { // reset square colours
+                    document.getElementById(IDs[i]).style.backgroundColor = '#eeeeee';
+                }
+                test = 1; // set logic variable
+            } else {
+                // user cancelled, do nothing
+            }
+        }    
+    </script>
+</body>
+</html>
