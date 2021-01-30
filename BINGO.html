@@ -132,7 +132,21 @@
                 document.getElementById("customizer").style.border = '0.4vw solid #010170';
                 document.getElementById("randomizer").style.border = '0.4vw solid #010170';
                 document.getElementById("free").style.color = '#010170';
-                styleTheme = 'Blue';
+                styleTheme = 'Blue'; // change theme variable
+                for (let i = 0; i < IDs.length-1; i++) {
+                    temp = document.getElementById(IDs[i]).style.backgroundColor;
+                    if (temp === "rgb(238, 238, 238)" || temp == "") {
+                        // do nothing, already gray
+                    } else {
+                        if (styleTheme === 'Green') {
+                            document.getElementById(IDs[i]).style.backgroundColor = '#0d0'
+                        } else if (styleTheme === 'Blue') {
+                            document.getElementById(IDs[i]).style.backgroundColor = '#00d'
+                        } else if (styleTheme === 'Red') {
+                            document.getElementById(IDs[i]).style.backgroundColor = '#d00'
+                        }
+                    }
+                }
                 return
             } else if (styleTheme === 'Blue') {
                 document.getElementById("background").style.backgroundColor = '#c1a1a1';
@@ -142,7 +156,21 @@
                 document.getElementById("customizer").style.border = '0.4vw solid #700101';
                 document.getElementById("randomizer").style.border = '0.4vw solid #700101';
                 document.getElementById("free").style.color = '#700101';
-                styleTheme = 'Red';
+                styleTheme = 'Red'; // change theme variable
+                for (let i = 0; i < IDs.length-1; i++) {
+                    temp = document.getElementById(IDs[i]).style.backgroundColor;
+                    if (temp === "rgb(238, 238, 238)" || temp == "") {
+                        // do nothing, already gray
+                    } else {
+                        if (styleTheme === 'Green') {
+                            document.getElementById(IDs[i]).style.backgroundColor = '#0d0'
+                        } else if (styleTheme === 'Blue') {
+                            document.getElementById(IDs[i]).style.backgroundColor = '#00d'
+                        } else if (styleTheme === 'Red') {
+                            document.getElementById(IDs[i]).style.backgroundColor = '#d00'
+                        }
+                    }
+                }
                 return
             } else if (styleTheme === 'Red') {
                 document.getElementById("background").style.backgroundColor = '#a1c1a1';
@@ -152,7 +180,21 @@
                 document.getElementById("customizer").style.border = '0.4vw solid #017001';
                 document.getElementById("randomizer").style.border = '0.4vw solid #017001';
                 document.getElementById("free").style.color = '#017001';
-                styleTheme = 'Green';
+                styleTheme = 'Green'; // change theme variable
+                for (let i = 0; i < IDs.length-1; i++) {
+                    temp = document.getElementById(IDs[i]).style.backgroundColor;
+                    if (temp === "rgb(238, 238, 238)" || temp == "") {
+                        // do nothing, already gray
+                    } else {
+                        if (styleTheme === 'Green') {
+                            document.getElementById(IDs[i]).style.backgroundColor = '#0d0'
+                        } else if (styleTheme === 'Blue') {
+                            document.getElementById(IDs[i]).style.backgroundColor = '#00d'
+                        } else if (styleTheme === 'Red') {
+                            document.getElementById(IDs[i]).style.backgroundColor = '#d00'
+                        }
+                    }
+                }
                 return
             }
         }
@@ -163,7 +205,6 @@
             if (IDs.includes(targ) && test === 0) {
                 // turn square green or back to gray
                 colour = document.getElementById(targ).style.backgroundColor;
-                //console.log(targ);
                 if (colour === "rgb(238, 238, 238)" || colour == "") {
                     if (styleTheme === 'Green') {
                         document.getElementById(targ).style.backgroundColor = '#0d0'
@@ -173,24 +214,23 @@
                         document.getElementById(targ).style.backgroundColor = '#d00'
                     }
                 } else {
-                    document.getElementById(targ).style.backgroundColor = '#eeeeee'
+                    document.getElementById(targ).style.backgroundColor = '' // set sqaure BG colour to none so does not clip off
                 } 
             } else if (IDs2.includes(targ) && test === 1) { // tap sqaure to input number
                 if (B.includes(targ)) {
-                    //console.log('B column');
-                    custNum = window.prompt("Enter number:","between 1 & 15");
+                    custNum = window.prompt("Enter number between 1 & 15:");
                     document.getElementById(targ).innerHTML = custNum;
                 } else if (I.includes(targ)) {
-                    custNum = window.prompt("Enter number:","between 16 & 30");
+                    custNum = window.prompt("Enter number between 16 & 30:");
                     document.getElementById(targ).innerHTML = custNum;
                 } else if (N.includes(targ)) {
-                    custNum = window.prompt("Enter number:","between 31 & 45");
+                    custNum = window.prompt("Enter number between 31 & 45:");
                     document.getElementById(targ).innerHTML = custNum;
                 } else if (G.includes(targ)) {
-                    custNum = window.prompt("Enter number:","between 46 & 60");
+                    custNum = window.prompt("Enter number between 46 & 60:");
                     document.getElementById(targ).innerHTML = custNum;
                 } else if (O.includes(targ)) {
-                    custNum = window.prompt("Enter number:","between 61 & 75");
+                    custNum = window.prompt("Enter number between 61 & 75:");
                     document.getElementById(targ).innerHTML = custNum;
                 } else {
                     // do nothing
@@ -221,7 +261,7 @@
                     } else {
                         Bnum[i] = num;
                         document.getElementById(B[i]).innerHTML = num;
-                        document.getElementById(B[i]).style.backgroundColor = '#eeeeee';
+                        document.getElementById(B[i]).style.backgroundColor = ''; // set sqaure BG colour to none so does not clip off
                         i = i+1;
                     }
                 }
