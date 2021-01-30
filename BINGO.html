@@ -347,7 +347,7 @@
                     } else {
                         Inum[i] = num;
                         document.getElementById(I[i]).innerHTML = num;
-                        document.getElementById(I[i]).style.backgroundColor = '#eeeeee';
+                        document.getElementById(I[i]).style.backgroundColor = '';
                         i = i+1;
                     }
                 }
@@ -361,7 +361,7 @@
                     } else {
                         Nnum[i] = num;
                         document.getElementById(N[i]).innerHTML = num;
-                        document.getElementById(N[i]).style.backgroundColor = '#eeeeee';
+                        document.getElementById(N[i]).style.backgroundColor = '';
                         i = i+1;
                     }
                 }
@@ -375,7 +375,7 @@
                     } else {
                         Gnum[i] = num;
                         document.getElementById(G[i]).innerHTML = num;
-                        document.getElementById(G[i]).style.backgroundColor = '#eeeeee';
+                        document.getElementById(G[i]).style.backgroundColor = '';
                         i = i+1;
                     }
                 }
@@ -389,11 +389,11 @@
                     } else {
                         Onum[i] = num;
                         document.getElementById(O[i]).innerHTML = num;
-                        document.getElementById(O[i]).style.backgroundColor = '#eeeeee';
+                        document.getElementById(O[i]).style.backgroundColor = '';
                         i = i+1;
                     }
                 }
-                document.getElementById("free").style.backgroundColor = '#eeeeee';
+                document.getElementById("free").style.backgroundColor = '';
             } else {
                 // user cancelled, do nothing
             }
@@ -405,7 +405,7 @@
                 document.getElementById("background").style.backgroundColor = '#555';
                 document.getElementById("free").innerHTML = 'Done?';
                 for (let i = 0; i < IDs.length; i++) { // reset square colours
-                    document.getElementById(IDs[i]).style.backgroundColor = '#eeeeee';
+                    document.getElementById(IDs[i]).style.backgroundColor = '';
                 }
                 test = 1; // set logic variable
             } else {
