@@ -3,7 +3,7 @@
     <!--
         By: Brendan Luke
         Date Started: January 29, 2020
-        Date Last Modified: January 29, 2020
+        Date Last Modified: January 30, 2020
     
         This webpage is a Bingo card.
         Green:
@@ -107,6 +107,8 @@
         IDs2 = IDs.slice(0,-1); // new array with all squares minus free square
         // set logic variable
         test = 0;
+        // set theme variable
+        styleTheme = 'Green';
 
         // Column IDs
         B = ['1','6','11','15','20']; // B column
@@ -122,7 +124,37 @@
         
         // function to change theme colors
         function themeFunc() {
-
+            if (styleTheme === 'Green') {
+                document.getElementById("background").style.backgroundColor = '#a1a1c1';
+                document.getElementById("header").style.backgroundColor = '#a1a1e1';
+                document.getElementById("header").style.borderBottomColor = '#010170'
+                document.getElementById("theme").style.border = '0.4vw solid #010170';
+                document.getElementById("customizer").style.border = '0.4vw solid #010170';
+                document.getElementById("randomizer").style.border = '0.4vw solid #010170';
+                document.getElementById("free").style.color = '#010170';
+                styleTheme = 'Blue';
+                return
+            } else if (styleTheme === 'Blue') {
+                document.getElementById("background").style.backgroundColor = '#c1a1a1';
+                document.getElementById("header").style.backgroundColor = '#e1a1a1';
+                document.getElementById("header").style.borderBottomColor = '#700101'
+                document.getElementById("theme").style.border = '0.4vw solid #700101';
+                document.getElementById("customizer").style.border = '0.4vw solid #700101';
+                document.getElementById("randomizer").style.border = '0.4vw solid #700101';
+                document.getElementById("free").style.color = '#700101';
+                styleTheme = 'Red';
+                return
+            } else if (styleTheme === 'Red') {
+                document.getElementById("background").style.backgroundColor = '#a1c1a1';
+                document.getElementById("header").style.backgroundColor = '#a1e1a1';
+                document.getElementById("header").style.borderBottomColor = '#017001'
+                document.getElementById("theme").style.border = '0.4vw solid #017001';
+                document.getElementById("customizer").style.border = '0.4vw solid #017001';
+                document.getElementById("randomizer").style.border = '0.4vw solid #017001';
+                document.getElementById("free").style.color = '#017001';
+                styleTheme = 'Green';
+                return
+            }
         }
 
         // Change color of square on click/tap if not in customize mode
@@ -133,7 +165,13 @@
                 colour = document.getElementById(targ).style.backgroundColor;
                 //console.log(targ);
                 if (colour === "rgb(238, 238, 238)" || colour == "") {
-                    document.getElementById(targ).style.backgroundColor = '#0f0'
+                    if (styleTheme === 'Green') {
+                        document.getElementById(targ).style.backgroundColor = '#0d0'
+                    } else if (styleTheme === 'Blue') {
+                        document.getElementById(targ).style.backgroundColor = '#00d'
+                    } else if (styleTheme === 'Red') {
+                        document.getElementById(targ).style.backgroundColor = '#d00'
+                    }
                 } else {
                     document.getElementById(targ).style.backgroundColor = '#eeeeee'
                 } 
@@ -159,14 +197,20 @@
                 }
             } else if (targ === 'free' && test === 1) {
                 test = 0;
-                document.getElementById("background").style.backgroundColor = '#a1c1a1';
+                if (styleTheme === 'Green') {
+                    document.getElementById("background").style.backgroundColor = '#a1c1a1';
+                } else if (styleTheme === 'Blue') {
+                    document.getElementById("background").style.backgroundColor = '#a1a1c1';
+                } else if (styleTheme === 'Red') {
+                    document.getElementById("background").style.backgroundColor = '#c1a1a1';
+                }
                 document.getElementById("free").innerHTML = 'FREE';
             }
         }
 
         // Randomize function
         function randomize() {
-            if (window.confirm("Are you sure you want to randomize? this will erase any current card")) { // user wishes to randomize card
+            if (window.confirm("Are you sure you want to randomize? This will erase any current card.")) { // user wishes to randomize card
             // B column
                 var i = 0; // index variable
                 while ( i < B.length) {
@@ -245,7 +289,7 @@
         
         // Customize Function
         function customize() {
-            if (window.confirm("Are you sure you want to customize? this will erase any current card")) {
+            if (window.confirm("Are you sure you want to customize? This will erase any current card.")) {
                 document.getElementById("background").style.backgroundColor = '#555';
                 document.getElementById("free").innerHTML = 'Done?';
                 for (let i = 0; i < IDs.length; i++) { // reset square colours
