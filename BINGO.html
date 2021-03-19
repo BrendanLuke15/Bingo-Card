@@ -3,21 +3,24 @@
     <!--
         By: Brendan Luke
         Date Started: January 29, 2020
-        Date Last Modified: January 30, 2020
+        Date Last Modified: March 19, 2020
     
         This webpage is a Bingo card.
-        Green:
+        Green: (120 °)
             Head: #a1e1a1
             BG: #a1c1a1
             Border: #017001
-        Blue:
-            Head: #a1a1e1
-            BG: #a1a1c1
-            Border: #010170
-        Red:
-            Head: #e1a1a1
-            BG: #c1a1a1
-            Border: #700101
+            Square: #00dd00
+        Blue: (222 °)
+            Head: #a2b5e2
+            BG: #9fa9c1
+            Border: #011F6F
+            Square: #0042db
+        Red: (18 °)
+            Head: #e2b5a2
+            BG: #c1a99f
+            Border: #6f2201
+            Square: #db4200
     -->
     <title>BINGO Card</title>
     <!--<link rel="shortcut icon" href="Images/IconB.png"/> <!-- Website Icon -->
@@ -125,13 +128,13 @@
         function themeFunc() {
             if (test === 0) { // test = 0 when not customizing
                 if (styleTheme === 'Green') {
-                    document.getElementById("background").style.backgroundColor = '#a1a1c1';
-                    document.getElementById("header").style.backgroundColor = '#a1a1e1';
-                    document.getElementById("header").style.borderBottomColor = '#010170'
-                    document.getElementById("theme").style.border = '0.4vw solid #010170';
-                    document.getElementById("customizer").style.border = '0.4vw solid #010170';
-                    document.getElementById("randomizer").style.border = '0.4vw solid #010170';
-                    document.getElementById("free").style.color = '#010170';
+                    document.getElementById("background").style.backgroundColor = '#9fa9c1';
+                    document.getElementById("header").style.backgroundColor = '#a2b5e2';
+                    document.getElementById("header").style.borderBottomColor = '#011F6F'
+                    document.getElementById("theme").style.border = '0.4vw solid #011F6F';
+                    document.getElementById("customizer").style.border = '0.4vw solid #011F6F';
+                    document.getElementById("randomizer").style.border = '0.4vw solid #011F6F';
+                    document.getElementById("free").style.color = '#011F6F';
                     styleTheme = 'Blue'; // change theme variable
                     for (let i = 0; i < IDs.length; i++) {
                         temp = document.getElementById(IDs[i]).style.backgroundColor;
@@ -141,21 +144,21 @@
                             if (styleTheme === 'Green') {
                                 document.getElementById(IDs[i]).style.backgroundColor = '#0d0'
                             } else if (styleTheme === 'Blue') {
-                                document.getElementById(IDs[i]).style.backgroundColor = '#00d'
+                                document.getElementById(IDs[i]).style.backgroundColor = '#0042db'
                             } else if (styleTheme === 'Red') {
-                                document.getElementById(IDs[i]).style.backgroundColor = '#d00'
+                                document.getElementById(IDs[i]).style.backgroundColor = '#db4200'
                             }
                         }
                     }
                     return
                 } else if (styleTheme === 'Blue') {
-                    document.getElementById("background").style.backgroundColor = '#c1a1a1';
-                    document.getElementById("header").style.backgroundColor = '#e1a1a1';
-                    document.getElementById("header").style.borderBottomColor = '#700101'
-                    document.getElementById("theme").style.border = '0.4vw solid #700101';
-                    document.getElementById("customizer").style.border = '0.4vw solid #700101';
-                    document.getElementById("randomizer").style.border = '0.4vw solid #700101';
-                    document.getElementById("free").style.color = '#700101';
+                    document.getElementById("background").style.backgroundColor = '#c1a99f';
+                    document.getElementById("header").style.backgroundColor = '#e2b5a2';
+                    document.getElementById("header").style.borderBottomColor = '#6f2201'
+                    document.getElementById("theme").style.border = '0.4vw solid #6f2201';
+                    document.getElementById("customizer").style.border = '0.4vw solid #6f2201';
+                    document.getElementById("randomizer").style.border = '0.4vw solid #6f2201';
+                    document.getElementById("free").style.color = '#6f2201';
                     styleTheme = 'Red'; // change theme variable
                     for (let i = 0; i < IDs.length; i++) {
                         temp = document.getElementById(IDs[i]).style.backgroundColor;
@@ -165,9 +168,9 @@
                             if (styleTheme === 'Green') {
                                 document.getElementById(IDs[i]).style.backgroundColor = '#0d0'
                             } else if (styleTheme === 'Blue') {
-                                document.getElementById(IDs[i]).style.backgroundColor = '#00d'
+                                document.getElementById(IDs[i]).style.backgroundColor = '#0042db'
                             } else if (styleTheme === 'Red') {
-                                document.getElementById(IDs[i]).style.backgroundColor = '#d00'
+                                document.getElementById(IDs[i]).style.backgroundColor = '#db4200'
                             }
                         }
                     }
@@ -189,9 +192,9 @@
                             if (styleTheme === 'Green') {
                                 document.getElementById(IDs[i]).style.backgroundColor = '#0d0'
                             } else if (styleTheme === 'Blue') {
-                                document.getElementById(IDs[i]).style.backgroundColor = '#00d'
+                                document.getElementById(IDs[i]).style.backgroundColor = '#0042db'
                             } else if (styleTheme === 'Red') {
-                                document.getElementById(IDs[i]).style.backgroundColor = '#d00'
+                                document.getElementById(IDs[i]).style.backgroundColor = '#db4200'
                             }
                         }
                     }
@@ -199,12 +202,12 @@
                 }                  
             } else {
                 if (styleTheme === 'Green') {
-                    document.getElementById("header").style.backgroundColor = '#a1a1e1';
-                    document.getElementById("header").style.borderBottomColor = '#010170'
-                    document.getElementById("theme").style.border = '0.4vw solid #010170';
-                    document.getElementById("customizer").style.border = '0.4vw solid #010170';
-                    document.getElementById("randomizer").style.border = '0.4vw solid #010170';
-                    document.getElementById("free").style.color = '#010170';
+                    document.getElementById("header").style.backgroundColor = '#a2b5e2';
+                    document.getElementById("header").style.borderBottomColor = '#011F6F'
+                    document.getElementById("theme").style.border = '0.4vw solid #011F6F';
+                    document.getElementById("customizer").style.border = '0.4vw solid #011F6F';
+                    document.getElementById("randomizer").style.border = '0.4vw solid #011F6F';
+                    document.getElementById("free").style.color = '#011F6F';
                     styleTheme = 'Blue'; // change theme variable
                     for (let i = 0; i < IDs.length; i++) {
                         temp = document.getElementById(IDs[i]).style.backgroundColor;
@@ -214,20 +217,20 @@
                             if (styleTheme === 'Green') {
                                 document.getElementById(IDs[i]).style.backgroundColor = '#0d0'
                             } else if (styleTheme === 'Blue') {
-                                document.getElementById(IDs[i]).style.backgroundColor = '#00d'
+                                document.getElementById(IDs[i]).style.backgroundColor = '#0042db'
                             } else if (styleTheme === 'Red') {
-                                document.getElementById(IDs[i]).style.backgroundColor = '#d00'
+                                document.getElementById(IDs[i]).style.backgroundColor = '#db4200'
                             }
                         }
                     }
                     return
                 } else if (styleTheme === 'Blue') {
-                    document.getElementById("header").style.backgroundColor = '#e1a1a1';
-                    document.getElementById("header").style.borderBottomColor = '#700101'
-                    document.getElementById("theme").style.border = '0.4vw solid #700101';
-                    document.getElementById("customizer").style.border = '0.4vw solid #700101';
-                    document.getElementById("randomizer").style.border = '0.4vw solid #700101';
-                    document.getElementById("free").style.color = '#700101';
+                    document.getElementById("header").style.backgroundColor = '#e2b5a2';
+                    document.getElementById("header").style.borderBottomColor = '#6f2201'
+                    document.getElementById("theme").style.border = '0.4vw solid #6f2201';
+                    document.getElementById("customizer").style.border = '0.4vw solid #6f2201';
+                    document.getElementById("randomizer").style.border = '0.4vw solid #6f2201';
+                    document.getElementById("free").style.color = '#6f2201';
                     styleTheme = 'Red'; // change theme variable
                     for (let i = 0; i < IDs.length; i++) {
                         temp = document.getElementById(IDs[i]).style.backgroundColor;
@@ -237,9 +240,9 @@
                             if (styleTheme === 'Green') {
                                 document.getElementById(IDs[i]).style.backgroundColor = '#0d0'
                             } else if (styleTheme === 'Blue') {
-                                document.getElementById(IDs[i]).style.backgroundColor = '#00d'
+                                document.getElementById(IDs[i]).style.backgroundColor = '#0042db'
                             } else if (styleTheme === 'Red') {
-                                document.getElementById(IDs[i]).style.backgroundColor = '#d00'
+                                document.getElementById(IDs[i]).style.backgroundColor = '#db4200'
                             }
                         }
                     }
@@ -260,9 +263,9 @@
                             if (styleTheme === 'Green') {
                                 document.getElementById(IDs[i]).style.backgroundColor = '#0d0'
                             } else if (styleTheme === 'Blue') {
-                                document.getElementById(IDs[i]).style.backgroundColor = '#00d'
+                                document.getElementById(IDs[i]).style.backgroundColor = '#0042db'
                             } else if (styleTheme === 'Red') {
-                                document.getElementById(IDs[i]).style.backgroundColor = '#d00'
+                                document.getElementById(IDs[i]).style.backgroundColor = '#db4200'
                             }
                         }
                     }
@@ -281,9 +284,9 @@
                     if (styleTheme === 'Green') {
                         document.getElementById(targ).style.backgroundColor = '#0d0'
                     } else if (styleTheme === 'Blue') {
-                        document.getElementById(targ).style.backgroundColor = '#00d'
+                        document.getElementById(targ).style.backgroundColor = '#0042db'
                     } else if (styleTheme === 'Red') {
-                        document.getElementById(targ).style.backgroundColor = '#d00'
+                        document.getElementById(targ).style.backgroundColor = '#db4200'
                     }
                 } else {
                     document.getElementById(targ).style.backgroundColor = '' // set sqaure BG colour to none so does not clip off
@@ -312,9 +315,9 @@
                 if (styleTheme === 'Green') {
                     document.getElementById("background").style.backgroundColor = '#a1c1a1';
                 } else if (styleTheme === 'Blue') {
-                    document.getElementById("background").style.backgroundColor = '#a1a1c1';
+                    document.getElementById("background").style.backgroundColor = '#9fa9c1';
                 } else if (styleTheme === 'Red') {
-                    document.getElementById("background").style.backgroundColor = '#c1a1a1';
+                    document.getElementById("background").style.backgroundColor = '#c1a99f';
                 }
                 document.getElementById("free").innerHTML = 'FREE';
             }
