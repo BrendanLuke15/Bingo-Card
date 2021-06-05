@@ -1,2 +1,2 @@
-# Bingo-Card
-Customizable bingo card for family game nights.
+# Brendan's Websites
+Collection of websites for various things.
